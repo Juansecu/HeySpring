@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.juansecu.HeySpring.daos.IPersonDao;
+import com.juansecu.HeySpring.services.IPersonService;
 
 @Controller
 @Slf4j
@@ -17,7 +17,7 @@ public class IndexController {
     @Value("${index.greeting}")
     private String greeting;
     @Autowired
-    private IPersonDao personDao;
+    private IPersonService personService;
 
     @GetMapping("/")
     public String start(Model model) {
@@ -25,7 +25,7 @@ public class IndexController {
         /* var person1 = new Person();
         var person2 = new Person();
         List<Person> people = Arrays.asList(person1, person2); */
-        Iterable<Person> people = this.personDao.findAll();
+        Iterable<Person> people = this.personService.getPeople();
 
         /* person1.setFirstName("Juanse");
         person1.setLastName("Coder");

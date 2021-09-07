@@ -17,6 +17,7 @@ public class Person implements Serializable {
     private String lastName;
     private String email;
     private String phone;
+    private String addedAt;
 
     private static final long SERIAL_VERSION_UID = 1L;
 }

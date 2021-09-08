@@ -6,6 +6,7 @@ import javax.persistence.*;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 
 @Data
@@ -21,6 +22,8 @@ public class Person implements Serializable {
     private String phone;
     @CreationTimestamp
     private Date addedAt;
+    @UpdateTimestamp
+    private Date updatedAt;
 
     private static final long SERIAL_VERSION_UID = 1L;
 }

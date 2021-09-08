@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.juansecu.HeySpring.services.IPersonService;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 @Slf4j
@@ -44,5 +45,16 @@ public class IndexController {
         model.addAttribute("people", people);
 
         return "index";
+    }
+
+    @GetMapping("/add")
+    public String add(Person person) {
+        return "modify";
+    }
+
+    @PostMapping("/save")
+    public String save(Person person) {
+        this.personService.savePerson(person);
+        return "redirect:/";
     }
 }

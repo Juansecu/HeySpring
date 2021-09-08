@@ -11,12 +11,12 @@
 
     <!-- <br />
 
-    <b>Nombre:</b>
+    <b>First Name:</b>
     <span th:text="${person1.firstName}"></span>
 
     <br />
 
-    <b>Apellido:</b>
+    <b>Last Name:</b>
     <span th:text="${person1.lastName}"></span>
 
     <br />
@@ -26,7 +26,7 @@
 
     <br />
 
-    <b>Teléfono:</b>
+    <b>Phone:</b>
     <span th:text="${person1.phone}"></span> -->
 
     <div th:if="${!people.empty}">
@@ -53,7 +53,7 @@
     </div>
 
     <div th:if="${people.empty}">
-        La lista de personas está vacía.
+        People list is empty.
     </div>
 </body>
 </html>

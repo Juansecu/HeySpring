@@ -21,7 +21,7 @@ public class IndexController {
 
     @GetMapping("/")
     public String start(Model model) {
-        var message = "Hola Mundo con Thymeleaf.";
+        var message = "Hello World, with Thymeleaf!";
         /* var person1 = new Person();
         var person2 = new Person();
         List<Person> people = Arrays.asList(person1, person2); */
@@ -37,7 +37,7 @@ public class IndexController {
         person2.setEmail("kgomez@yahoo.com");
         person2.setPhone("9988776655"); */
 
-        log.info("Ejecutando el controlador de tipo Spring MVC.");
+        log.info("Executing Spring MVC Controller.");
         model.addAttribute("message", message);
         model.addAttribute("greeting", this.greeting);
         // model.addAttribute("person1", person1);

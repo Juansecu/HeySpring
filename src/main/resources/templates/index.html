@@ -2,12 +2,12 @@
 <html xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title th:text="#{template.title}"></title>
 </head>
 <body>
     <header th:replace="layout/layout::header"></header>
 
-    <a th:href="@{/add}">Add person</a>
+    <a th:href="@{/add}" th:text="#{person.add}"></a>
 
     <p th:text="${message}"></p>
     <p th:text="${greeting}"></p>
@@ -35,15 +35,15 @@
     <div th:if="${!people.empty}">
         <table border="1">
             <thead>
-                <th>Person ID</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                <th>Added At</th>
-                <th>Updated At</th>
-                <th>Edit</th>
-                <th>Delete</th>
+                <th th:text="#{person.id}"></th>
+                <th th:text="#{person.first-name}"></th>
+                <th th:text="#{person.last-name}"></th>
+                <th th:text="#{person.email}"></th>
+                <th th:text="#{person.phone}"></th>
+                <th th:text="#{person.added-at}"></th>
+                <th th:text="#{person.updated-at}"></th>
+                <th th:text="#{action.edit}"></th>
+                <th th:text="#{action.remove}"></th>
             </thead>
             <tbody>
             <tr th:each="person : ${people}">
@@ -55,10 +55,10 @@
                 <td th:text="${person.addedAt}"></td>
                 <td th:text="${person.updatedAt}"></td>
                 <td>
-                    <a th:href="@{/edit/} + ${person.personId}" th:text="Edit"></a>
+                    <a th:href="@{/edit/} + ${person.personId}" th:text="#{action.edit}"></a>
                 </td>
                 <td>
-                    <a th:href="@{/remove(personId=${person.personId})}" th:text="Remove"></a>
+                    <a th:href="@{/remove(personId=${person.personId})}" th:text="#{action.remove}"></a>
                 </td>
             </tr>
             </tbody>
@@ -66,7 +66,7 @@
     </div>
 
     <div th:if="${people.empty}">
-        People list is empty.
+        [[#{people.empty-list}]]
     </div>
 
     <footer th:replace="layout/layout::footer"></footer>

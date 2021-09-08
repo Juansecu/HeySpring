@@ -8,7 +8,6 @@ import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-
 @Data
 @Entity
 @Table(name = "People")
@@ -20,6 +19,9 @@ public class Person implements Serializable {
     private String lastName;
     private String email;
     private String phone;
+    @Column(
+        updatable = false
+    )
     @CreationTimestamp
     private Date addedAt;
     @UpdateTimestamp

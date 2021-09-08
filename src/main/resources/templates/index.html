@@ -43,6 +43,7 @@
                 <th>Added At</th>
                 <th>Updated At</th>
                 <th>Edit</th>
+                <th>Delete</th>
             </thead>
             <tbody>
             <tr th:each="person : ${people}">
@@ -55,6 +56,9 @@
                 <td th:text="${person.updatedAt}"></td>
                 <td>
                     <a th:href="@{/edit/} + ${person.personId}" th:text="Edit"></a>
+                </td>
+                <td>
+                    <a th:href="@{/remove(personId=${person.personId})}" th:text="Remove"></a>
                 </td>
             </tr>
             </tbody>

@@ -59,6 +59,12 @@ public class IndexController {
         return "modify";
     }
 
+    @GetMapping("/remove")
+    public String remove(Person person) {
+        this.personService.deletePerson(person);
+        return "redirect:/";
+    }
+
     @PostMapping("/save")
     public String save(Person person) {
         this.personService.savePerson(person);

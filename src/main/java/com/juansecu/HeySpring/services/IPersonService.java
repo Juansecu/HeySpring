@@ -5,7 +5,7 @@ import java.util.List;
 import com.juansecu.HeySpring.Person;
 
 public interface IPersonService {
-    public void deletePerson(Person personId);
+    public void deletePerson(Person person);
 
     public List<Person> getPeople();
 

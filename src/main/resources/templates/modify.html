@@ -5,7 +5,9 @@
     <title>Person Data</title>
 </head>
 <body>
-    <h1>Person Data</h1>
+    <header th:replace="layout/layout::header"></header>
+
+    <h2>Person Data</h2>
 
     <a th:href="@{/}">Go back</a>
 
@@ -44,5 +46,7 @@
 
         <button type="submit">Add person</button>
     </form>
+
+    <footer th:replace="layout/layout::footer"></footer>
 </body>
 </html>

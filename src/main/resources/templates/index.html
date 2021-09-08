@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-    <h1>Home</h1>
+    <header th:replace="layout/layout::header"></header>
 
     <a th:href="@{/add}">Add person</a>
 
@@ -68,5 +68,7 @@
     <div th:if="${people.empty}">
         People list is empty.
     </div>
+
+    <footer th:replace="layout/layout::footer"></footer>
 </body>
 </html>

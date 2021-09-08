@@ -3,6 +3,8 @@ package com.juansecu.HeySpring;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.*;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -15,8 +17,12 @@ public class Person implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     private Long personId;
+    @NotEmpty
     private String firstName;
+    @NotEmpty
     private String lastName;
+    @Email
+    @NotEmpty
     private String email;
     private String phone;
     @Column(

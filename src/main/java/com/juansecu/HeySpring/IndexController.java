@@ -52,6 +52,13 @@ public class IndexController {
         return "modify";
     }
 
+    @GetMapping("/edit/{personId}")
+    public String edit(Model model, Person person) {
+        person = this.personService.getPerson(person.getPersonId());
+        model.addAttribute("person", person);
+        return "modify";
+    }
+
     @PostMapping("/save")
     public String save(Person person) {
         this.personService.savePerson(person);

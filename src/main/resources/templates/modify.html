@@ -12,6 +12,8 @@
     <br />
 
     <form th:action="@{/save}" th:object="${person}" method="post">
+        <input type="hidden" th:field="*{personId}" />
+
         <label for="first-name">First name:</label>
         <input type="text" th:field="*{firstName}" id="first-name" />
 

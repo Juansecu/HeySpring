@@ -1,9 +1,11 @@
 package com.juansecu.HeySpring;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 
 import lombok.Data;
+import org.hibernate.annotations.CreationTimestamp;
 
 
 @Data
@@ -17,7 +19,8 @@ public class Person implements Serializable {
     private String lastName;
     private String email;
     private String phone;
-    private String addedAt;
+    @CreationTimestamp
+    private Date addedAt;
 
     private static final long SERIAL_VERSION_UID = 1L;
 }

@@ -1,4 +1,4 @@
-package com.juansecu.HeySpring;
+package com.juansecu.HeySpring.domain;
 
 import java.io.Serializable;
 import java.util.Date;

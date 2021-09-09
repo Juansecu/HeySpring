@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.juansecu.HeySpring.Person;
+import com.juansecu.HeySpring.domain.Person;
 
 import com.juansecu.HeySpring.daos.IPersonDao;
 

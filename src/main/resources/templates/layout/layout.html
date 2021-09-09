@@ -7,6 +7,9 @@
 <body>
     <header th:fragment="header">
         <h1 th:text="#{template.title}"></h1>
+        <form th:action="@{/logout}" method="post">
+            <a href="#" th:text="#{template.sign-out}" onclick="this.parentNode.submit();"></a>
+        </form>
     </header>
 
     <footer th:fragment="footer">

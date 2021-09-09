@@ -10,6 +10,11 @@
     </header>
 
     <footer th:fragment="footer">
+        <div>
+            <a th:href="@{/(lang=en)}" th:text="#{template.language.en}"></a> |
+            <a th:href="@{/(lang=es)}" th:text="#{template.language.es}"></a>
+        </div>
+
         <p th:text="#{template.rights-message}"></p>
     </footer>
 </body>

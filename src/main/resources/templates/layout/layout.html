@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://thymeleaf.org" lang="en">
+<html xmlns:sec="http://thymeleaf.org/extras/spring-security" xmlns:th="http://thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8" />
     <title>Template</title>
@@ -8,6 +8,10 @@
     <header th:fragment="header">
         <h1 th:text="#{template.title}"></h1>
         <form th:action="@{/logout}" method="post">
+            <b>[[#{template.user}]]:</b>
+            <span sec:authentication="name"></span> |
+            <b>[[#{template.user-roles}]]:</b>
+            <span sec:authentication="principal.authorities"></span> |
             <a href="#" th:text="#{template.sign-out}" onclick="this.parentNode.submit();"></a>
         </form>
     </header>

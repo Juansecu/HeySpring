@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{template.denied-access}"></title>
+</head>
+<body>
+    <h1 th:text="#{template.denied-access}"></h1>
+    <p th:text="#{template.denied-access-message}"></p>
+    <a th:href="@{/}" th:text="#{action.go-back}"></a>
+</body>
+</html>

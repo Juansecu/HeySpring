@@ -6,6 +6,8 @@ import javax.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
@@ -23,7 +25,7 @@ public class IndexController {
     private IPersonService personService;
 
     @GetMapping("/")
-    public String start(Model model) {
+    public String start(@AuthenticationPrincipal User user, Model model) {
         var message = "Hello World, with Thymeleaf!";
         /* var person1 = new Person();
         var person2 = new Person();
@@ -41,6 +43,7 @@ public class IndexController {
         person2.setPhone("9988776655"); */
 
         log.info("Executing Spring MVC Controller.");
+        log.info("User: " + user);
         model.addAttribute("message", message);
         model.addAttribute("greeting", this.greeting);
         // model.addAttribute("person1", person1);

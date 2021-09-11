@@ -62,13 +62,17 @@
         </section>
     </header>
 
-    <footer th:fragment="footer">
-        <div>
-            <a th:href="@{/(lang=en)}" th:text="#{template.language.en}"></a> |
-            <a th:href="@{/(lang=es)}" th:text="#{template.language.es}"></a>
-        </div>
+    <footer th:fragment="footer" class="bg-dark text-white mt-5 py-3">
+        <div class="container">
+            <div class="col">
+                <div class="lead text-center">
+                    <a th:href="@{/(lang=en)}" th:text="#{template.language.en}" class="text-info"></a> |
+                    <a th:href="@{/(lang=es)}" th:text="#{template.language.es}" class="text-info"></a>
 
-        <p th:text="#{template.rights-message}"></p>
+                    <p class="mt-4">&copy; [[#{template.rights-message}]]</p>
+                </div>
+            </div>
+        </div>
     </footer>
 </body>
 </html>

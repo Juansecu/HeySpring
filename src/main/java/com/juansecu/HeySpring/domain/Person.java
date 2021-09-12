@@ -5,6 +5,7 @@ import java.util.Date;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Data;
 import org.hibernate.annotations.CreationTimestamp;
@@ -25,6 +26,8 @@ public class Person implements Serializable {
     @NotEmpty
     private String email;
     private String phone;
+    @NotNull
+    private Double balanceDue;
     @Column(
         updatable = false
     )

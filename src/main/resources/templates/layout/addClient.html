@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://thymeleaf.org/extras/spring-security" xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Add Client</title>
+</head>
+<body>
+    <section th:fragment="addClient">
+        <div class="modal fade" id="addClient">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h5 th:text="#{person.add}" class="modal-title"></h5>
+                        <button class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <form th:action="@{/save}" th:object="${person}" method="post" class="was-validated">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="first-name">[[#{person.first-name}]]:</label>
+                                <input type="text" name="firstName" class="form-control" id="first-name" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="last-name">[[#{person.last-name}]]:</label>
+                                <input type="text" name="lastName" class="form-control" id="last-name" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">[[#{person.email}]]:</label>
+                                <input type="email" name="email" class="form-control" id="email" required />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone">[[#{person.phone}]]:</label>
+                                <input type="tel" name="phone" class="form-control" id="phone" />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="balance-due">[[#{person.balance-due}]]:</label>
+                                <input type="number" name="balanceDue" class="form-control" id="balance-due" step="any" required>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" th:text="#{person.add}" class="btn btn-primary"></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

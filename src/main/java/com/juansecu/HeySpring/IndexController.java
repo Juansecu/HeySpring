@@ -27,7 +27,7 @@ public class IndexController {
     private IPersonService personService;
 
     @GetMapping("/")
-    public String start(@AuthenticationPrincipal User user, Model model) {
+    public String start(@AuthenticationPrincipal User user, Model model, Person person) {
         var message = "Hello World, with Thymeleaf!";
         Double totalBalanceDue = 0D;
         /* var person1 = new Person();
@@ -52,7 +52,7 @@ public class IndexController {
         // model.addAttribute("person1", person1);
         model.addAttribute("people", people);
 
-        for(Person person : people) totalBalanceDue += person.getBalanceDue();
+        for(Person p : people) totalBalanceDue += p.getBalanceDue();
 
         model.addAttribute("totalBalanceDue", totalBalanceDue);
         model.addAttribute("totalClients", people.size());

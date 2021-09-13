@@ -7,6 +7,10 @@
 <body>
     <header th:replace="layout/layout::header"></header>
 
+    <section th:replace="layout/buttonsAdd::buttonsAdd"></section>
+
+    <section th:replace="layout/addClient::addClient"></section>
+
     <section th:replace="layout/clientList::clientList"></section>
 
     <!-- <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/add}" th:text="#{person.add}"></a>

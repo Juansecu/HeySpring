@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://thymeleaf.org/extras/spring-security" xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Buttons Add</title>
+</head>
+<body>
+    <section th:fragment="buttonsAdd" class="py-4 mb-4 bg-light">
+        <div class="container">
+            <div class="row">
+                <div sec:authorize="hasRole('ROLE_ADMIN')" class="col-md-3">
+                    <a href="#" class="btn btn-primary btn-block" data-toggle="modal" data-target="#addClient">
+                        <i class="fas fa-plus"></i>
+                        <span th:text="#{person.add}"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

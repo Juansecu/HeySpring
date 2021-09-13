@@ -7,10 +7,12 @@
 <body>
     <header th:replace="layout/layout::header"></header>
 
-    <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/add}" th:text="#{person.add}"></a>
+    <section th:replace="layout/clientList::clientList"></section>
+
+    <!-- <a sec:authorize="hasRole('ROLE_ADMIN')" th:href="@{/add}" th:text="#{person.add}"></a>
 
     <p th:text="${message}"></p>
-    <p th:text="${greeting}"></p>
+    <p th:text="${greeting}"></p> -->
 
     <!-- <br />
 
@@ -31,43 +33,6 @@
 
     <b>Phone:</b>
     <span th:text="${person1.phone}"></span> -->
-
-    <div th:if="${!people.empty}">
-        <table border="1">
-            <thead>
-                <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{person.id}"></th>
-                <th th:text="#{person.first-name}"></th>
-                <th th:text="#{person.last-name}"></th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{person.email}"></th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{person.phone}"></th>
-                <th th:text="#{person.added-at}"></th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{person.updated-at}"></th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{action.edit}"></th>
-                <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{action.remove}"></th>
-            </thead>
-            <tbody>
-            <tr th:each="person : ${people}">
-                <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${person.personId}"></td>
-                <td th:text="${person.firstName}"></td>
-                <td th:text="${person.lastName}"></td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${person.email}"></td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${person.phone}"></td>
-                <td th:text="${person.addedAt}"></td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${person.updatedAt}"></td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a th:href="@{/edit/} + ${person.personId}" th:text="#{action.edit}"></a>
-                </td>
-                <td sec:authorize="hasRole('ROLE_ADMIN')">
-                    <a th:href="@{/remove(personId=${person.personId})}" th:text="#{action.remove}"></a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div th:if="${people.empty}">
-        [[#{people.empty-list}]]
-    </div>
 
     <br />
     <br />

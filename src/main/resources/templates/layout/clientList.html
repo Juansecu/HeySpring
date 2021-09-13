@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:sec="http://thymeleaf.org/extras/spring-security" xmlns:th="http://thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Clients List</title>
+</head>
+<body>
+    <section th:fragment="clientList" id="clients">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 th:text="#{people.list-title}"></h4>
+                        </div>
+
+                        <div th:if="${people != null and !people.empty}">
+                            <table class="table table-striped">
+                                <thead class="thead-dark">
+                                <tr>
+                                    <th>#</th>
+                                    <th th:text="#{person.full-name}"></th>
+                                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{person.email}"></th>
+                                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{person.phone}"></th>
+                                    <th th:text="#{person.balance-due}"></th>
+                                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{person.added-at}"></th>
+                                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{action.edit}"></th>
+                                    <th sec:authorize="hasRole('ROLE_ADMIN')" th:text="#{action.remove}"></th>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                    <tr th:each="person, index : ${people}">
+                                        <td th:text="${index.count}"></td>
+                                        <td th:text="${person.firstName} + ' ' + ${person.lastName}"></td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${person.email}"></td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${person.phone}"></td>
+                                        <td th:text="${new java.text.DecimalFormat('$#,##0.00').format(person.balanceDue)}"></td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')" th:text="${person.addedAt}"></td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <a th:href="@{/edit/} + ${person.personId}" class="btn btn-warning">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                        </td>
+                                        <td sec:authorize="hasRole('ROLE_ADMIN')">
+                                            <a th:href="@{/remove(personId=${person.personId})}" class="btn btn-danger">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div th:if="${people == null or people.empty}" class="text-center py-3">
+                            <span th:text="#{people.empty-list}"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="card card-text bg-danger text-white mb-3">
+                        <div class="card-body">
+                            <h3 th:text="#{people.total-balance-due}"></h3>
+                            <h4 th:text="${new java.text.DecimalFormat('$#,##0.00').format(totalBalanceDue)}" class="display-4"></h4>
+                        </div>
+                    </div>
+
+                    <div class="card text-center bg-success text-white mb3">
+                        <div class="card-body">
+                            <h3 th:text="#{people.total}"></h3>
+                            <h4 class="display-4">
+                                <i class="fas fa-users"></i>
+                                <span th:text="${totalClients}"></span>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

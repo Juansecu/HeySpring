@@ -1,5 +1,6 @@
 package com.juansecu.HeySpring;
 
+import java.util.List;
 import javax.validation.Valid;
 
 import lombok.extern.slf4j.Slf4j;
@@ -28,10 +29,11 @@ public class IndexController {
     @GetMapping("/")
     public String start(@AuthenticationPrincipal User user, Model model) {
         var message = "Hello World, with Thymeleaf!";
+        Double totalBalanceDue = 0D;
         /* var person1 = new Person();
         var person2 = new Person();
         List<Person> people = Arrays.asList(person1, person2); */
-        Iterable<Person> people = this.personService.getPeople();
+        List<Person> people = this.personService.getPeople();
 
         /* person1.setFirstName("Juanse");
         person1.setLastName("Coder");
@@ -49,6 +51,11 @@ public class IndexController {
         model.addAttribute("greeting", this.greeting);
         // model.addAttribute("person1", person1);
         model.addAttribute("people", people);
+
+        for(Person person : people) totalBalanceDue += person.getBalanceDue();
+
+        model.addAttribute("totalBalanceDue", totalBalanceDue);
+        model.addAttribute("totalClients", people.size());
 
         return "index";
     }
